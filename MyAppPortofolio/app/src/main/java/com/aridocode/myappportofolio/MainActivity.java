@@ -4,6 +4,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -34,5 +37,35 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickSpotify(View view) {
+        Button button = (Button) view;
+        Toast.makeText(this, String.format(getString(R.string.toast_message), button.getText()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClickScores(View view) {
+        Button button = (Button) view;
+        Toast.makeText(this, String.format(getString(R.string.toast_message), button.getText()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClickLibrary(View view) {
+        Button button = (Button) view;
+        Toast.makeText(this, String.format(getString(R.string.toast_message), button.getText()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClickBigger(View view) {
+        Button button = (Button) view;
+        Toast.makeText(this, String.format(getString(R.string.toast_message), button.getText()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClickReader(View view) {
+        Button button = (Button) view;
+        Toast.makeText(this, String.format(getString(R.string.toast_message), button.getText()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClickCapstone(View view) {
+        Button button = (Button) view;
+        Toast.makeText(this, String.format(getString(R.string.toast_message), button.getText()), Toast.LENGTH_SHORT).show();
     }
 }
