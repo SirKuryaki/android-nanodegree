@@ -12,7 +12,6 @@
         android:id="@+id/etxt_search_artist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:ems="10"
         android:hint="@string/search_artist_hint"
         android:imeOptions="actionSearch"
@@ -23,7 +22,6 @@
         android:id="@+id/listview_artists"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/activity_vertical_margin" />
 
 </LinearLayout>

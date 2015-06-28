@@ -1,5 +1,6 @@
 package com.aridocode.spotifystreamer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,6 +39,7 @@ public class MainActivityFragment extends Fragment {
 
     private ArrayAdapter<SpotifyArtist> mResultsAdapter;
     private ArrayList<SpotifyArtist> mLastSearch;
+    private OnArtistSelectedListener mListener;
 
     public MainActivityFragment() {
         mLastSearch = null;
@@ -77,6 +80,16 @@ public class MainActivityFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.listview_artists);
         listView.setAdapter(mResultsAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SpotifyArtist artist = (SpotifyArtist) parent.getItemAtPosition(position);
+                if (mListener != null) {
+                    mListener.onArtistSelected(artist);
+                }
+            }
+        });
+
         if (mLastSearch != null) {
             mResultsAdapter.addAll(mLastSearch);
         }
@@ -94,7 +107,29 @@ public class MainActivityFragment extends Fragment {
         Toast.makeText(getActivity(), resId, Toast.LENGTH_SHORT).show();
     }
 
-    public class FetchArtistsTask extends AsyncTask<String, Void, List<SpotifyArtist>> {
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mListener = null;
+        try {
+            mListener = (OnArtistSelectedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnArtistSelectedListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnArtistSelectedListener {
+        void onArtistSelected(SpotifyArtist artist);
+    }
+
+    private class FetchArtistsTask extends AsyncTask<String, Void, List<SpotifyArtist>> {
 
         @Override
         protected List<SpotifyArtist> doInBackground(String... params) {
