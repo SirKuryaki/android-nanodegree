@@ -99,6 +99,11 @@ public class TopTenTracksActivityFragment extends Fragment {
 
                         List<Image> images = album.images;
                         if (images != null && !images.isEmpty()) {
+                            /*
+                             * This array can contain up to three images sorted by size descending.
+                             * Last image is very small (64x64) so we use the middle one for thumbnail
+                             * and the first image for cover.
+                             */
                             if (images.size() > 1) {
                                 cover = images.get(0).url;
                                 thumb = images.get(1).url;

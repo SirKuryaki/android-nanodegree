@@ -151,6 +151,10 @@ public class MainActivityFragment extends Fragment {
 
                         List<Image> images = artist.images;
                         if (images != null && !images.isEmpty()) {
+                            /*
+                             * This array can contain up to three images sorted by size descending.
+                             * Last image is very small (64x64) so we use the middle one.
+                             */
                             if (images.size() > 1) {
                                 spotifyArtist.setImage(images.get(1).url);
                             } else {
