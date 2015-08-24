@@ -1,0 +1,4 @@
+<resources>
+
+    <integer name="movie_grid_columns">2</integer>
+</resources>

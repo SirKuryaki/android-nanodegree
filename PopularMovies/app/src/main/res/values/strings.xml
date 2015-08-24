@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="trailers">Trailers:</string>
+    <string name="reviews">Reviews:</string>
+    <string name="rating_format">%1$.1f/10</string>
+    <string name="share">Share</string>
+    <string name="favorite">favorite</string>
+    <string name="favorited">favorited</string>
+
+    <string name="sort_by">Sort by:</string>
+
+    <string-array name="sort_order">
+        <item>Most Popular</item>
+        <item>Highest Rated</item>
+        <item>Favorites</item>
+    </string-array>
+</resources>
