@@ -1,6 +1,6 @@
 # android-nanodegree
 
-In class Constants.java: 
+Before compiling, modify class Constants.java: 
 
     public static final String THE_MOVIE_DB_API_KEY = "PRIVATE";
     public static final String DEVELOPER_KEY = "PRIVATE";
