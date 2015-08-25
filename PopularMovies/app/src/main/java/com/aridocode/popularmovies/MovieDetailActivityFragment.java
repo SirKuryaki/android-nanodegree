@@ -131,6 +131,10 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+        if (savedInstanceState == null) {
+            updateMovieDetail();
+        }
     }
 
     @Override
@@ -164,12 +168,10 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
             getLoaderManager().restartLoader(REVIEWS_LOADER, null, this);
         }
     }
-
-
+    
     @Override
     public void onStart() {
         super.onStart();
-        updateMovieDetail();
     }
 
     private void updateMovieDetail() {
@@ -300,7 +302,7 @@ public class MovieDetailActivityFragment extends Fragment implements LoaderManag
             }
         }
 
-        if( mMenu != null ) {
+        if (mMenu != null) {
             MenuItem share = mMenu.findItem(R.id.menu_item_share);
 
             if (hasTrailer) {
